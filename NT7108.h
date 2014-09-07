@@ -11,9 +11,9 @@
 //------------------------------------------------------------------------------
 // Data and control ports
 //------------------------------------------------------------------------------
-#define NT7108_DATA_DDR         DDRB
-#define NT7108_DATA_PORT        PORTB
-#define NT7108_DATA_PIN         PINB
+#define NT7108_DATA_DDR         DDRD
+#define NT7108_DATA_PORT        PORTD
+#define NT7108_DATA_PIN         PIND
 
 #define NT7108_CTRL_DDR         DDRC
 #define NT7108_CTRL_PORT        PORTC

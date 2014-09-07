@@ -43,6 +43,12 @@ int czujnikNapiecie;
 
 //TODO
 //Zmienic nazwe funkcji bo ta jest troche mylaca. I wywalic do innego modulu
+void ADCInitialize(){
+	ACSR |= (1<<ACIE);
+	ACSR |= (1<<ACIS1);
+	ACSR |= (1<<ACIS0);
+}
+
 int ADCsingleREAD(uint8_t adctouse)
 {
 	int ADCval;
@@ -68,10 +74,8 @@ int main(void)
 	//TODO
 	//Napisac jakos inicjowanie ADC
 	//Initialize analog comparator 
-	ACSR |= (1<<ACIE);
-	ACSR |= (1<<ACIS1); 
-	ACSR |= (1<<ACIS0);
 	
+	//ADCInitialize();
 	timerInitializeTimer1();
 	timerInitializeTimer2();
 	GLI_Initialize();
