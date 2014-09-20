@@ -120,12 +120,37 @@ void GLI_DrawBitmap(unsigned char x, unsigned char y, const GLI_BITMAP *pBitmap)
     }
 }
 
+void GLI_DrawInteger(unsigned char y, unsigned char x, const GLI_FONT *pFont, int integerToWrite){
+	char stringToDraw[10];
+	sprintf(stringToDraw,"%d", integerToWrite);
+	GLI_DrawString(y,x,pFont,stringToDraw);
+}
+
+void GLI_DrawHexInteger(unsigned char y, unsigned char x, const GLI_FONT *pFont, int hexInteger){
+	char charactersToDraw[10];
+	if(((hexInteger>>4) & 15) < 10){
+		charactersToDraw[0] = '0' + ((hexInteger>>4)&15);
+	}
+	else{
+		charactersToDraw[0] = 'A' + ((hexInteger>>4)&15-10);
+	}
+	hexInteger <<= 4;
+	if(((hexInteger>>4) & 15) < 10){
+		charactersToDraw[1] = '0' + ((hexInteger>>4)&15);
+	}
+	else{
+		charactersToDraw[1] = 'A' + ((hexInteger>>4)&15-10);
+	}
+
+	GLI_DrawString(y,x,pFont,charactersToDraw);
+
+}
 
 //------------------------------------------------------------------------------
-void GLI_DrawString(unsigned char x, unsigned char y, const GLI_FONT *pFont, const char *pszString)
+void GLI_DrawString(unsigned char y, unsigned char x, const GLI_FONT *pFont, const char *pszString)
 {
-	int y1 = y;
-	int x1 =127 - x;
+	int y1 = x;
+	int x1 =127 - y;
     GLI_BITMAP Bitmap;
     Bitmap.Width = pFont->CharWidth;
     Bitmap.Height = pFont->CharHeight;

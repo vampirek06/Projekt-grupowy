@@ -37,8 +37,10 @@ void GLI_StrokeRectangle(unsigned char Left, unsigned char Top,
                          unsigned char Right, unsigned char Bottom,
                          unsigned char Color);
 void GLI_DrawBitmap(unsigned char x, unsigned char y, const GLI_BITMAP *pBitmap);
-void GLI_DrawString(unsigned char x, unsigned char y, const GLI_FONT *pFont,
+void GLI_DrawString(unsigned char y, unsigned char x, const GLI_FONT *pFont,
                     const char *pszString);
+void GLI_DrawInteger(unsigned char y, unsigned char x, const GLI_FONT *pFont, int integerToWrite);
+void GLI_DrawHexInteger(unsigned char y, unsigned char x, const GLI_FONT *pFont, int hexInteger);
 
 void GLI_Present(void);
 
